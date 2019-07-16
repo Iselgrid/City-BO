@@ -15,13 +15,18 @@ namespace CityBO
         public MainFormBO()
         {
             InitializeComponent();
+            
         }
 
         private void поискЗаказаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             Form orderSeachForm = new OrderSearchForm();
             orderSeachForm.MdiParent = this;
             orderSeachForm.Show();
+            
+
+            
         }
     }
 }
