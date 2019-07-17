@@ -12,6 +12,12 @@ namespace CityBO
 {
     public partial class OrderForm : Form
     {
+        public string OrderNumber
+        {
+            get { return OrderNum.Text; }
+            set { OrderNum.Text = value; }
+        }
+
         public OrderForm()
         {
             InitializeComponent();

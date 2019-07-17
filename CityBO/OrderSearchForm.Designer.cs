@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.OrderTextBoxOSF = new System.Windows.Forms.TextBox();
             this.OrderSearchBut = new System.Windows.Forms.Button();
+            this.OrderTextBoxOSF = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,15 +47,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // OrderTextBoxOSF
-            // 
-            this.OrderTextBoxOSF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.OrderTextBoxOSF.Location = new System.Drawing.Point(7, 20);
-            this.OrderTextBoxOSF.Name = "OrderTextBoxOSF";
-            this.OrderTextBoxOSF.Size = new System.Drawing.Size(396, 20);
-            this.OrderTextBoxOSF.TabIndex = 0;
-            // 
             // OrderSearchBut
             // 
             this.OrderSearchBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -65,6 +56,16 @@
             this.OrderSearchBut.TabIndex = 1;
             this.OrderSearchBut.Text = "Поиск";
             this.OrderSearchBut.UseVisualStyleBackColor = true;
+            this.OrderSearchBut.Click += new System.EventHandler(this.OrderSearchBut_Click);
+            // 
+            // OrderTextBoxOSF
+            // 
+            this.OrderTextBoxOSF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OrderTextBoxOSF.Location = new System.Drawing.Point(7, 20);
+            this.OrderTextBoxOSF.Name = "OrderTextBoxOSF";
+            this.OrderTextBoxOSF.Size = new System.Drawing.Size(396, 20);
+            this.OrderTextBoxOSF.TabIndex = 0;
             // 
             // groupBox2
             // 

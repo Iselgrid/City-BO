@@ -25,8 +25,6 @@ namespace CityBO
             orderSeachForm.MdiParent = this;
             orderSeachForm.Show();
             
-
-            
         }
     }
 }
