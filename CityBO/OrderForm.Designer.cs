@@ -50,6 +50,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -57,7 +58,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -251,6 +252,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(11, 205);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -269,6 +271,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Перелет";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(635, 7);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Обновить";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -305,7 +316,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(716, 219);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Общение";
+            this.tabPage3.Text = "Финансовая информация";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
@@ -315,7 +326,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(716, 219);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Дополнительно";
+            this.tabPage4.Text = "Общение";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // label9
@@ -342,14 +353,15 @@
             this.label10.Text = "Услуги";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button3
+            // tabPage5
             // 
-            this.button3.Location = new System.Drawing.Point(635, 7);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Обновить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(716, 219);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Дополнительно";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // OrderForm
             // 
@@ -410,5 +422,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }

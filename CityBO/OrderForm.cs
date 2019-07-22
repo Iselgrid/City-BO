@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -22,5 +24,26 @@ namespace CityBO
         {
             InitializeComponent();
         }
+
+        private DataTable OrderFillDatas(string orderNum)
+        {
+            DataTable ordersList = new DataTable();
+            string SendCommand = "SELECT * FROM orders WHERE id=" + orderNum;
+            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
+
+            using (MySqlConnection con = new MySqlConnection(connString))
+            {
+
+                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
+                {
+                    con.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    ordersList.Load(reader);
+                }
+            }
+            return ordersList;
+        }
+
+
     }
 }
