@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,29 +21,55 @@ namespace CityBO
             set { OrderNum.Text = value; }
         }
 
+        public string OrderCreateT
+        {
+            get { return OrderCreateTime.Text; }
+            set { OrderCreateTime.Text = value; }
+        }
+
+        public string PriceAmountFill
+        {
+            get { return PriceAmount.Text; }
+            set { PriceAmount.Text = value; }
+        }
+
+        public string TimeLimitFill
+        {
+            get { return TimeLimit.Text; }
+            set { TimeLimit.Text = value; }
+        }
+
+        public string PaidAmountFill
+        {
+            get { return PaidAmount.Text; }
+            set { PaidAmount.Text = value; }
+        }
+
+        public string ToPayAmountFill
+        {
+            get { return ToPayAmount.Text; }
+            set { ToPayAmount.Text = value; }
+        }
+
+        public string EmailFill
+        {
+            get { return Email.Text; }
+            set { Email.Text = value; }
+        }
+
+        public string PhoneNumberFill
+        {
+            get { return PhoneNumber.Text; }
+            set { PhoneNumber.Text = value; }
+        }
+
+
         public OrderForm()
         {
             InitializeComponent();
         }
 
-        private DataTable OrderFillDatas(string orderNum)
-        {
-            DataTable ordersList = new DataTable();
-            string SendCommand = "SELECT * FROM orders WHERE id=" + orderNum;
-            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
-
-            using (MySqlConnection con = new MySqlConnection(connString))
-            {
-
-                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
-                {
-                    con.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    ordersList.Load(reader);
-                }
-            }
-            return ordersList;
-        }
+        
 
 
     }

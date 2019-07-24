@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NoOrder = new System.Windows.Forms.Label();
             this.OrderSearchListOut = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +39,6 @@
             this.OrderSearchBut = new System.Windows.Forms.Button();
             this.OrderTextBoxOSF = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.NoOrder = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrderSearchListOut)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +56,14 @@
             this.groupBox1.Size = new System.Drawing.Size(710, 162);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // NoOrder
+            // 
+            this.NoOrder.AutoSize = true;
+            this.NoOrder.Location = new System.Drawing.Point(387, 23);
+            this.NoOrder.Name = "NoOrder";
+            this.NoOrder.Size = new System.Drawing.Size(0, 13);
+            this.NoOrder.TabIndex = 3;
             // 
             // OrderSearchListOut
             // 
@@ -77,6 +85,7 @@
             this.OrderSearchListOut.MultiSelect = false;
             this.OrderSearchListOut.Name = "OrderSearchListOut";
             this.OrderSearchListOut.ReadOnly = true;
+            this.OrderSearchListOut.RowHeadersVisible = false;
             this.OrderSearchListOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OrderSearchListOut.Size = new System.Drawing.Size(697, 109);
             this.OrderSearchListOut.TabIndex = 2;
@@ -145,14 +154,6 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Фильтры";
-            // 
-            // NoOrder
-            // 
-            this.NoOrder.AutoSize = true;
-            this.NoOrder.Location = new System.Drawing.Point(387, 23);
-            this.NoOrder.Name = "NoOrder";
-            this.NoOrder.Size = new System.Drawing.Size(0, 13);
-            this.NoOrder.TabIndex = 3;
             // 
             // OrderSearchForm
             // 
