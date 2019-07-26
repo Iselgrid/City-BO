@@ -21,14 +21,14 @@ namespace CityBO
 
         private void OrderSearchBut_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 OrderSearchListOut.DataSource = OrdersSearchListView(OrderTextBoxOSF.Text);
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
                 return;
-            }
+            //}
         }
 
         private DataTable OrdersSearchListView(string orderNum)
