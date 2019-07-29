@@ -30,6 +30,11 @@ namespace CityBO
             
         }
 
+        private void MainFormBO_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         //private DataTable Orders()
         //{
         //    DataTable ordersDatas = new DataTable();
@@ -49,7 +54,7 @@ namespace CityBO
         //    return ordersDatas;
         //}
 
-        
+
 
     }
 }

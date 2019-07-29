@@ -69,7 +69,50 @@ namespace CityBO
             InitializeComponent();
         }
 
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(Cursor.Position);
+        }
+
+        private void ToPayButton_Click(object sender, EventArgs e)
+        {
+            string res;
+            string SendCommand = "SELECT count(*) FROM invoices WHERE ordernum=" + this.OrderNumber + " and state=1";
+            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
+
+            using (MySqlConnection con = new MySqlConnection(connString))
+            {
+
+                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
+                {
+                    con.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    res = reader["count(*)"].ToString();
+                }
+            }
+
+            if(res != "1")
+            {
+                MessageBox.Show("По заказу уже есть ожидающие оплату счета");
+            }
+            else
+            {
+                int invNumber = Convert.ToInt32(res) + 1;
+                InvoiceCreate(invNumber);
+                MessageBox.Show("OK test");
+            }
+
+
+        }
+
+        private void InvoiceCreate(int invNumber)
+        {
+            NewInvoice invoice = new NewInvoice();
+            invoice.OrderNumFill = OrderNumber;
+            invoice.InvoiceNumFill = invNumber.ToString();
+            invoice.Show();
+        }
 
 
     }

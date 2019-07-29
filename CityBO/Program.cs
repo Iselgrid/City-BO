@@ -16,7 +16,7 @@ namespace CityBO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainFormBO());
+            Application.Run(new LoginForm());
         }
     }
 }

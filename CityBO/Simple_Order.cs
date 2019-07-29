@@ -21,7 +21,7 @@ namespace CityBO
             order.MdiParent = MainFormBO.ActiveForm;
 
 
-            DataTable ordersList = new DataTable();
+            
             string SendCommand = "SELECT * FROM orders WHERE id=" + num;
             string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
 
@@ -43,6 +43,8 @@ namespace CityBO
             }
             FlightsFillOrder(num, order);
             PassengersFillOrder(num, order);
+            InvoicesFillOrder(num, order);
+
             order.Show();
             
         }
@@ -93,6 +95,25 @@ namespace CityBO
             form.PassengersListView.DataSource = PassengersList;
         }
 
+        public void InvoicesFillOrder(string order, OrderForm form)
+        {
+            DataTable InvoicesList = new DataTable();
+            string SendCommand = "SELECT * FROM invoices WHERE ordernum=" + order;
+            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
+
+            using (MySqlConnection con = new MySqlConnection(connString))
+            {
+
+                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
+                {
+                    con.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    InvoicesList.Load(reader);
+                }
+            }
+
+            form.InvoicesListView.DataSource = InvoicesList;
+        }
 
 
     }
