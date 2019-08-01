@@ -21,12 +21,6 @@ namespace CityBO
             set { OrderNum.Text = value; }
         }
 
-        public string OrderCreateT
-        {
-            get { return OrderCreateTime.Text; }
-            set { OrderCreateTime.Text = value; }
-        }
-
         public string PriceAmountFill
         {
             get { return PriceAmount.Text; }
@@ -64,56 +58,108 @@ namespace CityBO
         }
 
 
-        public OrderForm()
+        public OrderForm(string order)
         {
             InitializeComponent();
+            OrderFormFill(order);
+            PriceDetales(order);
+            this.MdiParent = MainFormBO.ActiveForm;
+            this.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             contextMenuStrip1.Show(Cursor.Position);
         }
 
         private void ToPayButton_Click(object sender, EventArgs e)
         {
-            string res;
-            string SendCommand = "SELECT count(*) FROM invoices WHERE ordernum=" + this.OrderNumber + " and state=1";
-            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
+            string res = DB.DBCountConnect("invoices", "ordernum='" + OrderNumber + "' and state=1");
+            int invNumber = Convert.ToInt32(DB.DBCountConnect("invoices"))+1;
 
-            using (MySqlConnection con = new MySqlConnection(connString))
-            {
-
-                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
-                {
-                    con.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-                    res = reader["count(*)"].ToString();
-                }
-            }
-
-            if(res != "1")
+            if (res != "1")
             {
                 MessageBox.Show("По заказу уже есть ожидающие оплату счета");
             }
             else
             {
-                int invNumber = Convert.ToInt32(res) + 1;
-                InvoiceCreate(invNumber);
-                MessageBox.Show("OK test");
+                InvoiceCreate(invNumber.ToString());
             }
 
 
         }
 
-        private void InvoiceCreate(int invNumber)
+        private void InvoiceCreate(string invNumber)
         {
             NewInvoice invoice = new NewInvoice();
             invoice.OrderNumFill = OrderNumber;
-            invoice.InvoiceNumFill = invNumber.ToString();
+            invoice.InvoiceNumFill = invNumber;
             invoice.Show();
         }
 
+        private void ordersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.ordersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cTBODBDataSet1);
+
+        }
+
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "cTBODBDataSet4.invoices". При необходимости она может быть перемещена или удалена.
+            //this.invoicesTableAdapter.Fill(this.cTBODBDataSet4.invoices);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "cTBODBDataSet3.paxes". При необходимости она может быть перемещена или удалена.
+            //this.paxesTableAdapter.Fill(this.cTBODBDataSet3.paxes);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "cTBODBDataSet2.flights". При необходимости она может быть перемещена или удалена.
+            //this.flightsTableAdapter.Fill(this.cTBODBDataSet2.flights);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "cTBODBDataSet1.orders". При необходимости она может быть перемещена или удалена.
+            ////this.ordersTableAdapter.Fill(this.cTBODBDataSet1.orders);
+
+        }
+
+        public void OrderFormFill(string order)
+        {
+            DataTable dt = new DataTable();
+            dt = DB.DBConnect2("orders", "id='" + order + "'");
+            OrderNum.Text = dt.Rows[0][0].ToString();
+            creatTimeTextBox.Text = dt.Rows[0][1].ToString();
+            //PriceAmount.Text = dt.Rows[0][2].ToString();
+            Email.Text = dt.Rows[0][5].ToString();
+            PhoneNumber.Text = dt.Rows[0][6].ToString();
+            OrderFlightsListView.DataSource = DB.DBConnect2("flights", "id='" + order + "'");
+            PassengersListView.DataSource = DB.DBConnect2("paxes", "id='" + order + "'");
+            InvoicesListView.DataSource = DB.DBConnect2("invoices", "ordernum='" + order + "'");
+
+        }
+
+        public void PriceDetales(string order)
+        {
+            DataTable dt = new DataTable();
+            dt = DB.DBCountConnect("sum", "invoices", "state!='0'");
+            int sum = 0;
+            foreach (DataRow pr in dt.Rows)
+            {
+                sum += Convert.ToInt32(pr[0]);
+            }
+            PriceAmountFill = sum.ToString();
+
+            dt = DB.DBCountConnect("sum", "invoices", "state ='2'");
+            sum = 0;
+            foreach (DataRow pr in dt.Rows)
+            {
+                sum += Convert.ToInt32(pr[0]);
+            }
+            PaidAmountFill = sum.ToString();
+
+            dt = DB.DBCountConnect("sum", "invoices", "state ='1'");
+            sum = 0;
+            foreach (DataRow pr in dt.Rows)
+            {
+                sum += Convert.ToInt32(pr[0]);
+            }
+            ToPayAmountFill = sum.ToString();
+        }
 
     }
 }

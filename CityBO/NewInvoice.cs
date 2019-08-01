@@ -17,6 +17,8 @@ namespace CityBO
         public NewInvoice()
         {
             InitializeComponent();
+            TimeLimitDatas.Text = DateTime.Now.AddDays(1.0).ToString();
+            
         }
 
         public string OrderNumFill
@@ -43,25 +45,6 @@ namespace CityBO
             set { NoExtraAmount.Text = value; }
         }
 
-        public string ToPayDateFill
-        {
-            set
-            {
-                ToPayDate.Text = value;
-            }
-
-            get
-            {
-                DateTime dtTL = new DateTime();
-                dtTL = DateTime.ParseExact(ToPayDate.Text, "dd.MM.yyyy HH:mm",System.Globalization.CultureInfo.InvariantCulture);
-                string TL;
-                TL = dtTL.ToString("yyyyMMddHHmm");
-                return TL;
-            }
-        }
-
-        
-
         private void CancelBut_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,15 +52,9 @@ namespace CityBO
 
         private void OKBut_Click(object sender, EventArgs e)
         {
-            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
+            string datas = "'" + OrderNumFill + "','" + InvoiceNumFill + "','" + ToPayFill + "','" + TimeLimitDatas.Text.ToString() + ":00','0','01.01.1990 00:00:00','1','" + NoExtraAmountFill + "','" + DateTime.Now.ToString() + "','" + Comment.ToString() + "'";
+            DB.DBSentReq("invoices", "ordernum,id,sum,timelimit,psum,ptime,state,netto,crtime,comment", datas);
             
-            string crInv = "insert into invoices(ordernum,id,sum,timelimit,psum,ptime,state) value(" + OrderNumFill + ","+ InvoiceNumFill + ","+ ToPayFill + ","+ ToPayDateFill + "00,0,19000101000000,1)";
-            //MessageBox.Show(crInv);
-            MySqlConnection con = new MySqlConnection(connString);
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand(crInv, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
             this.Close();
         }
     }

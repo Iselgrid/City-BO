@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label creatTimeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.OrderCreateTime = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.creatTimeTextBox = new System.Windows.Forms.TextBox();
             this.OrderNum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -52,31 +53,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.OrderFlightsListView = new System.Windows.Forms.DataGridView();
-            this.FlightNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartureCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartureCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartureIATAcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartureDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArrivalCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArrivalCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArrivalIATAcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArrivalDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.PassengersListView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.InvoicesListView = new System.Windows.Forms.DataGridView();
             this.ToPayButton = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -94,16 +78,61 @@
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.button4 = new System.Windows.Forms.Button();
-            this.InvoicesListView = new System.Windows.Forms.DataGridView();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ChangeState = new System.Windows.Forms.Button();
+            this.ordersBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ordersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.cTBODBDataSet2 = new CityBO.CTBODBDataSet2();
+            this.flightsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.flightsTableAdapter = new CityBO.CTBODBDataSet2TableAdapters.flightsTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flightNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departureCountryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departureCityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departureIATAcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departureDTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arrivalCountryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arrivalCityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arrivalIATAcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arrivalDTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cTBODBDataSet1 = new CityBO.CTBODBDataSet1();
+            this.ordersTableAdapter = new CityBO.CTBODBDataSet1TableAdapters.ordersTableAdapter();
+            this.tableAdapterManager = new CityBO.CTBODBDataSet1TableAdapters.TableAdapterManager();
+            this.cTBODBDataSet3 = new CityBO.CTBODBDataSet3();
+            this.paxesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paxesTableAdapter = new CityBO.CTBODBDataSet3TableAdapters.paxesTableAdapter();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.citizenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTBODBDataSet4 = new CityBO.CTBODBDataSet4();
+            this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoicesTableAdapter = new CityBO.CTBODBDataSet4TableAdapters.invoicesTableAdapter();
+            this.ordernumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timelimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.psumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ptimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            creatTimeLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -113,40 +142,51 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassengersListView)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesListView)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoicesListView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).BeginInit();
+            this.ordersBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flightsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paxesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // creatTimeLabel
+            // 
+            creatTimeLabel.AutoSize = true;
+            creatTimeLabel.Location = new System.Drawing.Point(188, 20);
+            creatTimeLabel.Name = "creatTimeLabel";
+            creatTimeLabel.Size = new System.Drawing.Size(78, 13);
+            creatTimeLabel.TabIndex = 4;
+            creatTimeLabel.Text = "Сформирован";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.OrderCreateTime);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(creatTimeLabel);
+            this.groupBox1.Controls.Add(this.creatTimeTextBox);
             this.groupBox1.Controls.Add(this.OrderNum);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 53);
+            this.groupBox1.Size = new System.Drawing.Size(430, 58);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Заказ";
             // 
-            // OrderCreateTime
+            // creatTimeTextBox
             // 
-            this.OrderCreateTime.Location = new System.Drawing.Point(272, 17);
-            this.OrderCreateTime.Name = "OrderCreateTime";
-            this.OrderCreateTime.Size = new System.Drawing.Size(148, 20);
-            this.OrderCreateTime.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(188, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Сформирован";
+            this.creatTimeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ordersBindingSource, "CreatTime", true));
+            this.creatTimeTextBox.Location = new System.Drawing.Point(272, 17);
+            this.creatTimeTextBox.Name = "creatTimeTextBox";
+            this.creatTimeTextBox.Size = new System.Drawing.Size(148, 20);
+            this.creatTimeTextBox.TabIndex = 5;
             // 
             // OrderNum
             // 
@@ -330,20 +370,22 @@
             // 
             this.OrderFlightsListView.AllowUserToAddRows = false;
             this.OrderFlightsListView.AllowUserToDeleteRows = false;
+            this.OrderFlightsListView.AutoGenerateColumns = false;
             this.OrderFlightsListView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.OrderFlightsListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrderFlightsListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FlightNumber,
-            this.DepartureCountry,
-            this.DepartureCity,
-            this.DepartureIATAcode,
-            this.DepartureDT,
-            this.ArrivalCountry,
-            this.ArrivalCity,
-            this.ArrivalIATAcode,
-            this.ArrivalDT,
-            this.State,
-            this.id});
+            this.idDataGridViewTextBoxColumn,
+            this.flightNumberDataGridViewTextBoxColumn,
+            this.departureCountryDataGridViewTextBoxColumn,
+            this.departureCityDataGridViewTextBoxColumn,
+            this.departureIATAcodeDataGridViewTextBoxColumn,
+            this.departureDTDataGridViewTextBoxColumn,
+            this.arrivalCountryDataGridViewTextBoxColumn,
+            this.arrivalCityDataGridViewTextBoxColumn,
+            this.arrivalIATAcodeDataGridViewTextBoxColumn,
+            this.arrivalDTDataGridViewTextBoxColumn,
+            this.stateDataGridViewTextBoxColumn});
+            this.OrderFlightsListView.DataSource = this.flightsBindingSource;
             this.OrderFlightsListView.Location = new System.Drawing.Point(6, 37);
             this.OrderFlightsListView.Name = "OrderFlightsListView";
             this.OrderFlightsListView.ReadOnly = true;
@@ -351,94 +393,6 @@
             this.OrderFlightsListView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OrderFlightsListView.Size = new System.Drawing.Size(926, 176);
             this.OrderFlightsListView.TabIndex = 3;
-            // 
-            // FlightNumber
-            // 
-            this.FlightNumber.DataPropertyName = "FlightNumber";
-            this.FlightNumber.HeaderText = "Рейс";
-            this.FlightNumber.Name = "FlightNumber";
-            this.FlightNumber.ReadOnly = true;
-            this.FlightNumber.Width = 60;
-            // 
-            // DepartureCountry
-            // 
-            this.DepartureCountry.DataPropertyName = "DepartureCountry";
-            this.DepartureCountry.HeaderText = "Страна";
-            this.DepartureCountry.Name = "DepartureCountry";
-            this.DepartureCountry.ReadOnly = true;
-            this.DepartureCountry.Width = 50;
-            // 
-            // DepartureCity
-            // 
-            this.DepartureCity.DataPropertyName = "DepartureCity";
-            this.DepartureCity.HeaderText = "Город";
-            this.DepartureCity.Name = "DepartureCity";
-            this.DepartureCity.ReadOnly = true;
-            this.DepartureCity.Width = 120;
-            // 
-            // DepartureIATAcode
-            // 
-            this.DepartureIATAcode.DataPropertyName = "DepartureIATAcode";
-            this.DepartureIATAcode.HeaderText = "Код";
-            this.DepartureIATAcode.Name = "DepartureIATAcode";
-            this.DepartureIATAcode.ReadOnly = true;
-            this.DepartureIATAcode.Width = 50;
-            // 
-            // DepartureDT
-            // 
-            this.DepartureDT.DataPropertyName = "DepartureDT";
-            this.DepartureDT.HeaderText = "Время";
-            this.DepartureDT.Name = "DepartureDT";
-            this.DepartureDT.ReadOnly = true;
-            this.DepartureDT.Width = 150;
-            // 
-            // ArrivalCountry
-            // 
-            this.ArrivalCountry.DataPropertyName = "ArrivalCountry";
-            this.ArrivalCountry.HeaderText = "Страна";
-            this.ArrivalCountry.Name = "ArrivalCountry";
-            this.ArrivalCountry.ReadOnly = true;
-            this.ArrivalCountry.Width = 50;
-            // 
-            // ArrivalCity
-            // 
-            this.ArrivalCity.DataPropertyName = "ArrivalCity";
-            this.ArrivalCity.HeaderText = "Город";
-            this.ArrivalCity.Name = "ArrivalCity";
-            this.ArrivalCity.ReadOnly = true;
-            this.ArrivalCity.Width = 120;
-            // 
-            // ArrivalIATAcode
-            // 
-            this.ArrivalIATAcode.DataPropertyName = "ArrivalIATAcode";
-            this.ArrivalIATAcode.HeaderText = "Код";
-            this.ArrivalIATAcode.Name = "ArrivalIATAcode";
-            this.ArrivalIATAcode.ReadOnly = true;
-            this.ArrivalIATAcode.Width = 50;
-            // 
-            // ArrivalDT
-            // 
-            this.ArrivalDT.DataPropertyName = "ArrivalDT";
-            this.ArrivalDT.HeaderText = "Время";
-            this.ArrivalDT.Name = "ArrivalDT";
-            this.ArrivalDT.ReadOnly = true;
-            this.ArrivalDT.Width = 150;
-            // 
-            // State
-            // 
-            this.State.DataPropertyName = "State";
-            this.State.HeaderText = "Статус";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            this.State.Width = 80;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
             // 
             // button3
             // 
@@ -482,17 +436,20 @@
             // 
             this.PassengersListView.AllowUserToAddRows = false;
             this.PassengersListView.AllowUserToDeleteRows = false;
+            this.PassengersListView.AutoGenerateColumns = false;
             this.PassengersListView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PassengersListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PassengersListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column8,
-            this.Column6,
-            this.Column7});
+            this.idDataGridViewTextBoxColumn1,
+            this.tipeDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.genderDataGridViewTextBoxColumn,
+            this.dBDataGridViewTextBoxColumn,
+            this.passportDataGridViewTextBoxColumn,
+            this.citizenDataGridViewTextBoxColumn,
+            this.eDDataGridViewTextBoxColumn});
+            this.PassengersListView.DataSource = this.paxesBindingSource;
             this.PassengersListView.Location = new System.Drawing.Point(6, 37);
             this.PassengersListView.Name = "PassengersListView";
             this.PassengersListView.ReadOnly = true;
@@ -500,67 +457,6 @@
             this.PassengersListView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PassengersListView.Size = new System.Drawing.Size(926, 176);
             this.PassengersListView.TabIndex = 4;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id";
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Tipe";
-            this.Column2.HeaderText = "Тип";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "LastName";
-            this.Column3.HeaderText = "Фамилия";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "FirstName";
-            this.Column4.HeaderText = "Имя";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "DB";
-            this.Column5.HeaderText = "Дата рождения";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Citizen";
-            this.Column8.HeaderText = "Гражданство";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 120;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Passport";
-            this.Column6.HeaderText = "Номер документа";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "ED";
-            this.Column7.HeaderText = "Срок действия";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -574,6 +470,40 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Финансовая информация";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 10);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(115, 17);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Только активные";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesListView
+            // 
+            this.InvoicesListView.AllowUserToAddRows = false;
+            this.InvoicesListView.AllowUserToDeleteRows = false;
+            this.InvoicesListView.AutoGenerateColumns = false;
+            this.InvoicesListView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InvoicesListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InvoicesListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ordernumDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn2,
+            this.sumDataGridViewTextBoxColumn,
+            this.timelimitDataGridViewTextBoxColumn,
+            this.psumDataGridViewTextBoxColumn,
+            this.ptimeDataGridViewTextBoxColumn,
+            this.stateDataGridViewTextBoxColumn1});
+            this.InvoicesListView.DataSource = this.invoicesBindingSource;
+            this.InvoicesListView.Location = new System.Drawing.Point(6, 37);
+            this.InvoicesListView.Name = "InvoicesListView";
+            this.InvoicesListView.ReadOnly = true;
+            this.InvoicesListView.RowHeadersVisible = false;
+            this.InvoicesListView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.InvoicesListView.Size = new System.Drawing.Size(926, 176);
+            this.InvoicesListView.TabIndex = 4;
             // 
             // ToPayButton
             // 
@@ -719,110 +649,427 @@
             this.toolStripMenuItem10.Size = new System.Drawing.Size(269, 22);
             this.toolStripMenuItem10.Text = "Обмен завершен";
             // 
-            // button4
+            // ChangeState
             // 
-            this.button4.Location = new System.Drawing.Point(935, 180);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(22, 22);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "@";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.ChangeState.Location = new System.Drawing.Point(935, 180);
+            this.ChangeState.Name = "ChangeState";
+            this.ChangeState.Size = new System.Drawing.Size(22, 22);
+            this.ChangeState.TabIndex = 7;
+            this.ChangeState.Text = "@";
+            this.ChangeState.UseVisualStyleBackColor = true;
+            this.ChangeState.Click += new System.EventHandler(this.Button4_Click);
             // 
-            // InvoicesListView
+            // ordersBindingNavigator
             // 
-            this.InvoicesListView.AllowUserToAddRows = false;
-            this.InvoicesListView.AllowUserToDeleteRows = false;
-            this.InvoicesListView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.InvoicesListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15});
-            this.InvoicesListView.Location = new System.Drawing.Point(6, 37);
-            this.InvoicesListView.Name = "InvoicesListView";
-            this.InvoicesListView.ReadOnly = true;
-            this.InvoicesListView.RowHeadersVisible = false;
-            this.InvoicesListView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InvoicesListView.Size = new System.Drawing.Size(926, 176);
-            this.InvoicesListView.TabIndex = 4;
+            this.ordersBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.ordersBindingNavigator.BindingSource = this.ordersBindingSource;
+            this.ordersBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.ordersBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.ordersBindingNavigator.Dock = System.Windows.Forms.DockStyle.None;
+            this.ordersBindingNavigator.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.ordersBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.ordersBindingNavigatorSaveItem});
+            this.ordersBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.ordersBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.ordersBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.ordersBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.ordersBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.ordersBindingNavigator.Name = "ordersBindingNavigator";
+            this.ordersBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.ordersBindingNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.ordersBindingNavigator.ShowItemToolTips = false;
+            this.ordersBindingNavigator.Size = new System.Drawing.Size(277, 25);
+            this.ordersBindingNavigator.TabIndex = 8;
+            this.ordersBindingNavigator.Text = "bindingNavigator1";
+            this.ordersBindingNavigator.Visible = false;
             // 
-            // Column9
+            // bindingNavigatorAddNewItem
             // 
-            this.Column9.DataPropertyName = "ordernum";
-            this.Column9.HeaderText = "Номер заказа";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Добавить";
             // 
-            // Column10
+            // bindingNavigatorCountItem
             // 
-            this.Column10.DataPropertyName = "id";
-            this.Column10.HeaderText = "Номер";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 50;
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
+            this.bindingNavigatorCountItem.Text = "для {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
-            // Column11
+            // bindingNavigatorDeleteItem
             // 
-            this.Column11.DataPropertyName = "sum";
-            this.Column11.HeaderText = "Сумма";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 120;
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Удалить";
             // 
-            // Column12
+            // bindingNavigatorMoveFirstItem
             // 
-            this.Column12.DataPropertyName = "timelimit";
-            this.Column12.HeaderText = "Тайм-лимит";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 200;
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
             // 
-            // Column13
+            // bindingNavigatorMovePreviousItem
             // 
-            this.Column13.DataPropertyName = "psum";
-            this.Column13.HeaderText = "Оплачено";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Width = 120;
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
-            // Column14
+            // bindingNavigatorSeparator
             // 
-            this.Column14.DataPropertyName = "ptime";
-            this.Column14.HeaderText = "Дата оплаты";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Width = 200;
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
             // 
-            // Column15
+            // bindingNavigatorPositionItem
             // 
-            this.Column15.DataPropertyName = "state";
-            this.Column15.HeaderText = "Статус";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Width = 200;
+            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
-            // checkBox1
+            // bindingNavigatorSeparator1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 10);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(115, 17);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Только активные";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // ordersBindingNavigatorSaveItem
+            // 
+            this.ordersBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ordersBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("ordersBindingNavigatorSaveItem.Image")));
+            this.ordersBindingNavigatorSaveItem.Name = "ordersBindingNavigatorSaveItem";
+            this.ordersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.ordersBindingNavigatorSaveItem.Text = "Сохранить данные";
+            this.ordersBindingNavigatorSaveItem.Click += new System.EventHandler(this.ordersBindingNavigatorSaveItem_Click);
+            // 
+            // cTBODBDataSet2
+            // 
+            this.cTBODBDataSet2.DataSetName = "CTBODBDataSet2";
+            this.cTBODBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // flightsBindingSource
+            // 
+            this.flightsBindingSource.DataMember = "flights";
+            this.flightsBindingSource.DataSource = this.cTBODBDataSet2;
+            // 
+            // flightsTableAdapter
+            // 
+            this.flightsTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // flightNumberDataGridViewTextBoxColumn
+            // 
+            this.flightNumberDataGridViewTextBoxColumn.DataPropertyName = "FlightNumber";
+            this.flightNumberDataGridViewTextBoxColumn.HeaderText = "Рейс";
+            this.flightNumberDataGridViewTextBoxColumn.Name = "flightNumberDataGridViewTextBoxColumn";
+            this.flightNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.flightNumberDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // departureCountryDataGridViewTextBoxColumn
+            // 
+            this.departureCountryDataGridViewTextBoxColumn.DataPropertyName = "DepartureCountry";
+            this.departureCountryDataGridViewTextBoxColumn.HeaderText = "Страна";
+            this.departureCountryDataGridViewTextBoxColumn.Name = "departureCountryDataGridViewTextBoxColumn";
+            this.departureCountryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.departureCountryDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // departureCityDataGridViewTextBoxColumn
+            // 
+            this.departureCityDataGridViewTextBoxColumn.DataPropertyName = "DepartureCity";
+            this.departureCityDataGridViewTextBoxColumn.HeaderText = "Город";
+            this.departureCityDataGridViewTextBoxColumn.Name = "departureCityDataGridViewTextBoxColumn";
+            this.departureCityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.departureCityDataGridViewTextBoxColumn.Width = 160;
+            // 
+            // departureIATAcodeDataGridViewTextBoxColumn
+            // 
+            this.departureIATAcodeDataGridViewTextBoxColumn.DataPropertyName = "DepartureIATAcode";
+            this.departureIATAcodeDataGridViewTextBoxColumn.HeaderText = "IATA";
+            this.departureIATAcodeDataGridViewTextBoxColumn.Name = "departureIATAcodeDataGridViewTextBoxColumn";
+            this.departureIATAcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.departureIATAcodeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // departureDTDataGridViewTextBoxColumn
+            // 
+            this.departureDTDataGridViewTextBoxColumn.DataPropertyName = "DepartureDT";
+            this.departureDTDataGridViewTextBoxColumn.HeaderText = "Вылет";
+            this.departureDTDataGridViewTextBoxColumn.Name = "departureDTDataGridViewTextBoxColumn";
+            this.departureDTDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // arrivalCountryDataGridViewTextBoxColumn
+            // 
+            this.arrivalCountryDataGridViewTextBoxColumn.DataPropertyName = "ArrivalCountry";
+            this.arrivalCountryDataGridViewTextBoxColumn.HeaderText = "Страна";
+            this.arrivalCountryDataGridViewTextBoxColumn.Name = "arrivalCountryDataGridViewTextBoxColumn";
+            this.arrivalCountryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.arrivalCountryDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // arrivalCityDataGridViewTextBoxColumn
+            // 
+            this.arrivalCityDataGridViewTextBoxColumn.DataPropertyName = "ArrivalCity";
+            this.arrivalCityDataGridViewTextBoxColumn.HeaderText = "Город";
+            this.arrivalCityDataGridViewTextBoxColumn.Name = "arrivalCityDataGridViewTextBoxColumn";
+            this.arrivalCityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.arrivalCityDataGridViewTextBoxColumn.Width = 160;
+            // 
+            // arrivalIATAcodeDataGridViewTextBoxColumn
+            // 
+            this.arrivalIATAcodeDataGridViewTextBoxColumn.DataPropertyName = "ArrivalIATAcode";
+            this.arrivalIATAcodeDataGridViewTextBoxColumn.HeaderText = "IATA";
+            this.arrivalIATAcodeDataGridViewTextBoxColumn.Name = "arrivalIATAcodeDataGridViewTextBoxColumn";
+            this.arrivalIATAcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.arrivalIATAcodeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // arrivalDTDataGridViewTextBoxColumn
+            // 
+            this.arrivalDTDataGridViewTextBoxColumn.DataPropertyName = "ArrivalDT";
+            this.arrivalDTDataGridViewTextBoxColumn.HeaderText = "Прилет";
+            this.arrivalDTDataGridViewTextBoxColumn.Name = "arrivalDTDataGridViewTextBoxColumn";
+            this.arrivalDTDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "Статус";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ordersBindingSource
+            // 
+            this.ordersBindingSource.DataMember = "orders";
+            this.ordersBindingSource.DataSource = this.cTBODBDataSet1;
+            // 
+            // cTBODBDataSet1
+            // 
+            this.cTBODBDataSet1.DataSetName = "CTBODBDataSet1";
+            this.cTBODBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ordersTableAdapter
+            // 
+            this.ordersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.flightsTableAdapter = null;
+            this.tableAdapterManager.ordersTableAdapter = this.ordersTableAdapter;
+            this.tableAdapterManager.paxesTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = CityBO.CTBODBDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.usersTableAdapter = null;
+            // 
+            // cTBODBDataSet3
+            // 
+            this.cTBODBDataSet3.DataSetName = "CTBODBDataSet3";
+            this.cTBODBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // paxesBindingSource
+            // 
+            this.paxesBindingSource.DataMember = "paxes";
+            this.paxesBindingSource.DataSource = this.cTBODBDataSet3;
+            // 
+            // paxesTableAdapter
+            // 
+            this.paxesTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // tipeDataGridViewTextBoxColumn
+            // 
+            this.tipeDataGridViewTextBoxColumn.DataPropertyName = "Tipe";
+            this.tipeDataGridViewTextBoxColumn.HeaderText = "Тип";
+            this.tipeDataGridViewTextBoxColumn.Name = "tipeDataGridViewTextBoxColumn";
+            this.tipeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tipeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastNameDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstNameDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Пол";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
+            this.genderDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // dBDataGridViewTextBoxColumn
+            // 
+            this.dBDataGridViewTextBoxColumn.DataPropertyName = "DB";
+            this.dBDataGridViewTextBoxColumn.HeaderText = "Дата рождения";
+            this.dBDataGridViewTextBoxColumn.Name = "dBDataGridViewTextBoxColumn";
+            this.dBDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // passportDataGridViewTextBoxColumn
+            // 
+            this.passportDataGridViewTextBoxColumn.DataPropertyName = "Passport";
+            this.passportDataGridViewTextBoxColumn.HeaderText = "Номер документа";
+            this.passportDataGridViewTextBoxColumn.Name = "passportDataGridViewTextBoxColumn";
+            this.passportDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // citizenDataGridViewTextBoxColumn
+            // 
+            this.citizenDataGridViewTextBoxColumn.DataPropertyName = "Citizen";
+            this.citizenDataGridViewTextBoxColumn.HeaderText = "Гражданство";
+            this.citizenDataGridViewTextBoxColumn.Name = "citizenDataGridViewTextBoxColumn";
+            this.citizenDataGridViewTextBoxColumn.ReadOnly = true;
+            this.citizenDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // eDDataGridViewTextBoxColumn
+            // 
+            this.eDDataGridViewTextBoxColumn.DataPropertyName = "ED";
+            this.eDDataGridViewTextBoxColumn.HeaderText = "Срок действия";
+            this.eDDataGridViewTextBoxColumn.Name = "eDDataGridViewTextBoxColumn";
+            this.eDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cTBODBDataSet4
+            // 
+            this.cTBODBDataSet4.DataSetName = "CTBODBDataSet4";
+            this.cTBODBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoicesBindingSource
+            // 
+            this.invoicesBindingSource.DataMember = "invoices";
+            this.invoicesBindingSource.DataSource = this.cTBODBDataSet4;
+            // 
+            // invoicesTableAdapter
+            // 
+            this.invoicesTableAdapter.ClearBeforeFill = true;
+            // 
+            // ordernumDataGridViewTextBoxColumn
+            // 
+            this.ordernumDataGridViewTextBoxColumn.DataPropertyName = "ordernum";
+            this.ordernumDataGridViewTextBoxColumn.HeaderText = "ordernum";
+            this.ordernumDataGridViewTextBoxColumn.Name = "ordernumDataGridViewTextBoxColumn";
+            this.ordernumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ordernumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idDataGridViewTextBoxColumn2
+            // 
+            this.idDataGridViewTextBoxColumn2.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn2.HeaderText = "Номер";
+            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn2.Width = 50;
+            // 
+            // sumDataGridViewTextBoxColumn
+            // 
+            this.sumDataGridViewTextBoxColumn.DataPropertyName = "sum";
+            this.sumDataGridViewTextBoxColumn.HeaderText = "Сумма";
+            this.sumDataGridViewTextBoxColumn.Name = "sumDataGridViewTextBoxColumn";
+            this.sumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sumDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // timelimitDataGridViewTextBoxColumn
+            // 
+            this.timelimitDataGridViewTextBoxColumn.DataPropertyName = "timelimit";
+            this.timelimitDataGridViewTextBoxColumn.HeaderText = "Тайм-лимит";
+            this.timelimitDataGridViewTextBoxColumn.Name = "timelimitDataGridViewTextBoxColumn";
+            this.timelimitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.timelimitDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // psumDataGridViewTextBoxColumn
+            // 
+            this.psumDataGridViewTextBoxColumn.DataPropertyName = "psum";
+            this.psumDataGridViewTextBoxColumn.HeaderText = "Оплачено";
+            this.psumDataGridViewTextBoxColumn.Name = "psumDataGridViewTextBoxColumn";
+            this.psumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.psumDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // ptimeDataGridViewTextBoxColumn
+            // 
+            this.ptimeDataGridViewTextBoxColumn.DataPropertyName = "ptime";
+            this.ptimeDataGridViewTextBoxColumn.HeaderText = "Дата оплаты";
+            this.ptimeDataGridViewTextBoxColumn.Name = "ptimeDataGridViewTextBoxColumn";
+            this.ptimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ptimeDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // stateDataGridViewTextBoxColumn1
+            // 
+            this.stateDataGridViewTextBoxColumn1.DataPropertyName = "state";
+            this.stateDataGridViewTextBoxColumn1.HeaderText = "Статус";
+            this.stateDataGridViewTextBoxColumn1.Name = "stateDataGridViewTextBoxColumn1";
+            this.stateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.stateDataGridViewTextBoxColumn1.Width = 200;
             // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 594);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.ordersBindingNavigator);
+            this.Controls.Add(this.ChangeState);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.AviaLabelState);
             this.Controls.Add(this.tabControl1);
@@ -834,6 +1081,7 @@
             this.MinimumSize = new System.Drawing.Size(985, 633);
             this.Name = "OrderForm";
             this.Text = "OrderForm";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -847,19 +1095,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.PassengersListView)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesListView)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.InvoicesListView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).EndInit();
+            this.ordersBindingNavigator.ResumeLayout(false);
+            this.ordersBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flightsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paxesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cTBODBDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox OrderCreateTime;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox OrderNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -889,26 +1147,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage tabPage5;
         public System.Windows.Forms.DataGridView OrderFlightsListView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FlightNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepartureCountry;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepartureCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepartureIATAcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepartureDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ArrivalCountry;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ArrivalCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ArrivalIATAcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ArrivalDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         public System.Windows.Forms.DataGridView PassengersListView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button ToPayButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -922,15 +1161,62 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ChangeState;
         public System.Windows.Forms.DataGridView InvoicesListView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.CheckBox checkBox1;
+        private CTBODBDataSet1 cTBODBDataSet1;
+        private System.Windows.Forms.BindingSource ordersBindingSource;
+        private CTBODBDataSet1TableAdapters.ordersTableAdapter ordersTableAdapter;
+        private CTBODBDataSet1TableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.BindingNavigator ordersBindingNavigator;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton ordersBindingNavigatorSaveItem;
+        private System.Windows.Forms.TextBox creatTimeTextBox;
+        private CTBODBDataSet2 cTBODBDataSet2;
+        private System.Windows.Forms.BindingSource flightsBindingSource;
+        private CTBODBDataSet2TableAdapters.flightsTableAdapter flightsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn flightNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureCountryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureCityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureIATAcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureDTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrivalCountryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrivalCityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrivalIATAcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrivalDTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private CTBODBDataSet3 cTBODBDataSet3;
+        private System.Windows.Forms.BindingSource paxesBindingSource;
+        private CTBODBDataSet3TableAdapters.paxesTableAdapter paxesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dBDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn citizenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eDDataGridViewTextBoxColumn;
+        private CTBODBDataSet4 cTBODBDataSet4;
+        private System.Windows.Forms.BindingSource invoicesBindingSource;
+        private CTBODBDataSet4TableAdapters.invoicesTableAdapter invoicesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ordernumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timelimitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn psumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ptimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn1;
     }
 }

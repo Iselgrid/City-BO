@@ -21,38 +21,33 @@ namespace CityBO
 
         private void OrderSearchBut_Click(object sender, EventArgs e)
         {
-            try
+            if (OrderTextBoxOSF.Text == "*")
             {
-                OrderSearchListOut.DataSource = OrdersSearchListView(OrderTextBoxOSF.Text);
+                this.ordersTableAdapter.Fill(this.cTBODBDataSet.orders);
             }
-            catch
+            else
             {
-                return;
-            }
-        }
-
-        private DataTable OrdersSearchListView(string orderNum)
-        {
-            DataTable ordersList = new DataTable();
-            string SendCommand = "SELECT id,CreatTime,Price,State,Title FROM orders WHERE id=" + orderNum;
-            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
-
-            using (MySqlConnection con = new MySqlConnection(connString))
-            {
-                
-                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
+                try
                 {
-                    con.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    ordersList.Load(reader);
+                    OrderSearchListOut.DataSource = DB.DBConnect2("orders", "id='"+OrderTextBoxOSF.Text+"'");
+                }
+                catch
+                {
+                    return;
                 }
             }
-            return ordersList;
         }
 
         private void OrderSearchListOut_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Simple_Order order = new Simple_Order(OrderSearchListOut.Rows[0].Cells[0].Value.ToString());
+            OrderForm order = new OrderForm(OrderSearchListOut.Rows[0].Cells[0].Value.ToString());
+        }
+
+        private void OrderSearchForm_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "cTBODBDataSet.orders". При необходимости она может быть перемещена или удалена.
+            //this.ordersTableAdapter.Fill(this.cTBODBDataSet.orders);
+
         }
     }
 }

@@ -28,49 +28,27 @@ namespace CityBO
         {
             try
             {
-                string res = DBConnet();
+                string res = DB.DBCountConnect("users", "uname='" + textBox1.Text + "' and password='" + textBox2.Text + "'");
 
                 if (res == "1")
                 {
                     this.Hide();
                     MainFormBO mf = new MainFormBO();
                     mf.Show();
-                }
+        }
                 else
                 {
                     MessageBox.Show("Неверный логин или пароль");
                 }
-            }
-            catch
+}
+            catch (Exception exc)
             {
-                MessageBox.Show("Ошибка входа");
+                MessageBox.Show(exc.ToString());
                 return;
             }
             
 
 
-        }
-
-
-        public string DBConnet()
-        {
-            string count = "0";
-            string SendCommand = "SELECT count(*) FROM users WHERE uname='" + textBox1.Text + "'and password='" + textBox2.Text + "'";
-            string connString = ConfigurationManager.ConnectionStrings["dbx"].ConnectionString;
-
-            using (MySqlConnection con = new MySqlConnection(connString))
-            {
-
-                using (MySqlCommand cmd = new MySqlCommand(SendCommand, con))
-                {
-                    con.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-                    count = reader["count(*)"].ToString();
-                }
-            }
-
-            return count;
         }
     }
 }

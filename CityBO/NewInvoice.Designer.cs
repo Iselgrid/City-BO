@@ -39,13 +39,16 @@
             this.InvoiceNum = new System.Windows.Forms.TextBox();
             this.ToPay = new System.Windows.Forms.TextBox();
             this.NoExtraAmount = new System.Windows.Forms.TextBox();
-            this.ToPayDate = new System.Windows.Forms.MaskedTextBox();
+            this.Comment = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TimeLimitDatas = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // CancelBut
             // 
             this.CancelBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBut.Location = new System.Drawing.Point(205, 156);
+            this.CancelBut.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBut.Location = new System.Drawing.Point(523, 143);
             this.CancelBut.Name = "CancelBut";
             this.CancelBut.Size = new System.Drawing.Size(75, 23);
             this.CancelBut.TabIndex = 0;
@@ -56,7 +59,7 @@
             // OKBut
             // 
             this.OKBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKBut.Location = new System.Drawing.Point(124, 156);
+            this.OKBut.Location = new System.Drawing.Point(442, 143);
             this.OKBut.Name = "OKBut";
             this.OKBut.Size = new System.Drawing.Size(75, 23);
             this.OKBut.TabIndex = 1;
@@ -137,21 +140,40 @@
             this.NoExtraAmount.Size = new System.Drawing.Size(167, 20);
             this.NoExtraAmount.TabIndex = 10;
             // 
-            // ToPayDate
+            // Comment
             // 
-            this.ToPayDate.Location = new System.Drawing.Point(112, 113);
-            this.ToPayDate.Mask = "00/00/0000 90:00";
-            this.ToPayDate.Name = "ToPayDate";
-            this.ToPayDate.Size = new System.Drawing.Size(167, 20);
-            this.ToPayDate.TabIndex = 12;
-            this.ToPayDate.ValidatingType = typeof(System.DateTime);
+            this.Comment.Location = new System.Drawing.Point(285, 38);
+            this.Comment.Multiline = true;
+            this.Comment.Name = "Comment";
+            this.Comment.Size = new System.Drawing.Size(313, 95);
+            this.Comment.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(285, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Комментарий";
+            // 
+            // TimeLimitDatas
+            // 
+            this.TimeLimitDatas.CustomFormat = "dd.MM.yyyy hh:mm";
+            this.TimeLimitDatas.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TimeLimitDatas.Location = new System.Drawing.Point(112, 110);
+            this.TimeLimitDatas.Name = "TimeLimitDatas";
+            this.TimeLimitDatas.Size = new System.Drawing.Size(167, 20);
+            this.TimeLimitDatas.TabIndex = 15;
             // 
             // NewInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 191);
-            this.Controls.Add(this.ToPayDate);
+            this.ClientSize = new System.Drawing.Size(610, 178);
+            this.Controls.Add(this.TimeLimitDatas);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Comment);
             this.Controls.Add(this.NoExtraAmount);
             this.Controls.Add(this.ToPay);
             this.Controls.Add(this.InvoiceNum);
@@ -183,6 +205,8 @@
         private System.Windows.Forms.TextBox InvoiceNum;
         private System.Windows.Forms.TextBox ToPay;
         private System.Windows.Forms.TextBox NoExtraAmount;
-        private System.Windows.Forms.MaskedTextBox ToPayDate;
+        private System.Windows.Forms.TextBox Comment;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker TimeLimitDatas;
     }
 }
