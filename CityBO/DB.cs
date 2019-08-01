@@ -59,6 +59,9 @@ namespace CityBO
 
             SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\AMD\source\repos\CityBO\CityBO\CTBODB.mdf; Integrated Security = True");
             SqlDataAdapter sda = new SqlDataAdapter(SendCommand, con);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
         }
 
         public static DataTable DBCountConnect(string datas, string reqtable, string reqwhere)

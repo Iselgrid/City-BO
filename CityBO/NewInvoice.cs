@@ -14,11 +14,24 @@ namespace CityBO
 {
     public partial class NewInvoice : Form
     {
-        public NewInvoice()
+        public NewInvoice(OrderForm of1)
         {
             InitializeComponent();
             TimeLimitDatas.Text = DateTime.Now.AddDays(1.0).ToString();
-            
+        }
+
+        public delegate void UpdateDelegate(object sender, UpdateEventArgs args);
+        public event UpdateDelegate UpdateEventHandler;
+
+        public class UpdateEventArgs : EventArgs
+        {
+            public string Data { get; set; }
+        }
+
+        protected void insert()
+        {
+            UpdateEventArgs args = new UpdateEventArgs();
+            UpdateEventHandler.Invoke(this, args);
         }
 
         public string OrderNumFill
@@ -54,7 +67,8 @@ namespace CityBO
         {
             string datas = "'" + OrderNumFill + "','" + InvoiceNumFill + "','" + ToPayFill + "','" + TimeLimitDatas.Text.ToString() + ":00','0','01.01.1990 00:00:00','1','" + NoExtraAmountFill + "','" + DateTime.Now.ToString() + "','" + Comment.ToString() + "'";
             DB.DBSentReq("invoices", "ordernum,id,sum,timelimit,psum,ptime,state,netto,crtime,comment", datas);
-            
+            insert();
+
             this.Close();
         }
     }

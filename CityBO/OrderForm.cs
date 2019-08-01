@@ -62,7 +62,7 @@ namespace CityBO
         {
             InitializeComponent();
             OrderFormFill(order);
-            PriceDetales(order);
+            
             this.MdiParent = MainFormBO.ActiveForm;
             this.Show();
         }
@@ -91,7 +91,8 @@ namespace CityBO
 
         private void InvoiceCreate(string invNumber)
         {
-            NewInvoice invoice = new NewInvoice();
+            NewInvoice invoice = new NewInvoice(this);
+            invoice.UpdateEventHandler += NewInvoice_UpdateEventHandler1;
             invoice.OrderNumFill = OrderNumber;
             invoice.InvoiceNumFill = invNumber;
             invoice.Show();
@@ -124,13 +125,12 @@ namespace CityBO
             dt = DB.DBConnect2("orders", "id='" + order + "'");
             OrderNum.Text = dt.Rows[0][0].ToString();
             creatTimeTextBox.Text = dt.Rows[0][1].ToString();
-            //PriceAmount.Text = dt.Rows[0][2].ToString();
             Email.Text = dt.Rows[0][5].ToString();
             PhoneNumber.Text = dt.Rows[0][6].ToString();
             OrderFlightsListView.DataSource = DB.DBConnect2("flights", "id='" + order + "'");
             PassengersListView.DataSource = DB.DBConnect2("paxes", "id='" + order + "'");
             InvoicesListView.DataSource = DB.DBConnect2("invoices", "ordernum='" + order + "'");
-
+            PriceDetales(order);
         }
 
         public void PriceDetales(string order)
@@ -159,6 +159,11 @@ namespace CityBO
                 sum += Convert.ToInt32(pr[0]);
             }
             ToPayAmountFill = sum.ToString();
+        }
+
+        private void NewInvoice_UpdateEventHandler1(object sender, NewInvoice.UpdateEventArgs args)
+        {
+            OrderFormFill(OrderNumber);
         }
 
     }

@@ -47,7 +47,6 @@
             // CancelBut
             // 
             this.CancelBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBut.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelBut.Location = new System.Drawing.Point(523, 143);
             this.CancelBut.Name = "CancelBut";
             this.CancelBut.Size = new System.Drawing.Size(75, 23);

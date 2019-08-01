@@ -43,7 +43,7 @@ namespace CityBO
 }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.ToString());
+                MessageBox.Show(exc.Message);
                 return;
             }
             
